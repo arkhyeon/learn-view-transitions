@@ -1,0 +1,51 @@
+@keyframes pop-out-to-right {
+  to {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+@keyframes pop-in-from-right {
+  from {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+}
+
+@keyframes slideOut {
+  to {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+}
+
+.view-title {
+  view-transition-name: view-title;
+}
+.view-description {
+  view-transition-name: view-desc;
+}
+.view-counter {
+  view-transition-name: view-count;
+}
+
+::view-transition-old(view-count) {
+  animation-name: pop-out-to-right;
+}
+::view-transition-new(view-count) {
+  animation-name: pop-in-from-right;
+}
+
+::view-transition-old(view-title),
+::view-transition-old(view-desc) {
+  animation-name: slideOut;
+}
+::view-transition-new(view-title),
+::view-transition-new(view-desc) {
+  animation-name: slideIn;
+}
